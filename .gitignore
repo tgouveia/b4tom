@@ -3,3 +3,4 @@
 .ignore/*
 *.bak
 *.bkp
+config/b4tom.conf
