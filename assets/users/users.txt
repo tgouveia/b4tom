@@ -1,0 +1,17 @@
+[user]
+usernumber=2000
+usersitenumber=1
+username=time1
+userenabled=t
+userfullname=Time 1
+userdesc=Time 1
+userpassword=70015z
+
+usernumber=2001
+usersitenumber=1
+username=time2
+userenabled=t
+userfullname=Time2
+userdesc=Time2
+userpassword=370015z
+
