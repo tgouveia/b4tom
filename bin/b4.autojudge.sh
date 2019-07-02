@@ -14,7 +14,7 @@ function help_and_exit() {
 	echo "   Options:"
 	echo ""
 	echo "   --help             Exibe esta mensagem e sai do script"
-	echo "   --boca=bocafolder  Pede para digitar os nomes e descrições dos usuários"
+	echo "   --boca=bocafolder  Pede para digitar odiretório onde está o boca"
 	echo ""	
 	exit 0
 }
@@ -37,7 +37,6 @@ arg=""
 if [ "$#" -eq 1 ]; then
 	a0="$(echo ${1} | sed -r 's/^-*//' | tr '=' ' ')"
 	read param arg <<< "${a0}"
-	opt="$a1"
 	
 	[ "$param" != "boca" ] && echo "   *** ERRO: '$param' is not a valid parameter" && help_and_exit
 	[ ! -d "$arg" ] && echo "   *** ERRO: '$arg' is not a directory" && exit 1
@@ -53,7 +52,7 @@ if [ "$boca" == "" ]; then
 		if [ -x "${arg}/tools/autojudge.sh" ]; then
 			echo "   *** Boca found in '${arg}'"
 			echo "   *** Running '${arg}/tools/autojudge.sh'"
-			echo "   (Wanna run other boca? use the option--boca=bocadir)"
+			echo "   (Wanna run other boca? use the option --boca=bocadir)"
 			boca="$arg"
 			break
 		fi
