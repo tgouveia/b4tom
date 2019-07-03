@@ -14,7 +14,7 @@ function help_and_exit() {
 	echo "   Options:"
 	echo ""
 	echo "   --help             Exibe esta mensagem e sai do script"
-	echo "   --boca=bocafolder  Pede para digitar odiretório onde está o boca"
+	echo "   --boca=bocafolder  Pede para digitar o diretório onde está o boca"
 	echo ""	
 	exit 0
 }
@@ -71,6 +71,19 @@ if [ "$boca" == "" ]; then
 	boca="$arg"
 fi
 
+
+# Asking for password changing
+read -p "   *** Do you want to change the password for user system [y/n]? " response
+if [ "${response}" == "y" -o "${response}" == "Y" ]; then
+	read -p "   *** Please enter the new pass: " new_pass
+
+	mkdir ${boca}/src/private/backup &> /dev/null
+	
+	cp ${boca}/src/private/conf.php ${boca}/src/private/backup/conf.php.$(date +%Y.%m.%d.%H.%M.%S)
+	
+	sed -i -r 's/\$conf\["basepass"\]=".*";/$conf["basepass"]="'${new_pass}'";/' ${boca}/src/private/conf.php
+	
+fi
 
 # Running createdb.php
 cd ${boca}/src/private
