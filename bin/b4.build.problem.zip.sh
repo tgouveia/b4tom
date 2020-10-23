@@ -55,6 +55,8 @@ cd $(dirname $true_path)
 # Temporary folder for the problem
 tdir=$(mktemp -d /tmp/b4.XXXXXXXXX)
 
+mkdir $tdir/input $tdir/output &> /dev/null
+
 # Copying (creating) the necessary files
 cp -r ../assets/base_problem/* $tdir
 cp ${olddir}/${opt[infolder]}/* $tdir/input/
